@@ -12,10 +12,14 @@ jobs:
     - name: Install TeX Live and additional fonts
       run: |
         sudo apt-get update
-        sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng texlive-latex-recommended lmodern
+        sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng texlive-latex-recommended lmodern biber
 
     - name: Compile LaTeX document
-      run: pdflatex Appendix.tex
+      run: |
+        pdflatex -interaction=nonstopmode -halt-on-error Appendix.tex
+        bibtex Appendix
+        pdflatex -interaction=nonstopmode -halt-on-error Appendix.tex
+        pdflatex -interaction=nonstopmode -halt-on-error Appendix.tex
 
     - name: Upload PDF
       uses: actions/upload-artifact@v2
