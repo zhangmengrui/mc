@@ -11,14 +11,13 @@ jobs:
     - name: Setup TeX Live
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: Appendix.tex # 您的主.tex文件的名称
+        root_file: Appendix.tex
 
     - name: Compile LaTeX document
-      run: pdflatex main.tex
+      run: pdflatex Appendix.tex
 
     - name: Upload PDF
       uses: actions/upload-artifact@v2
       with:
         name: Compiled-PDF
         path: Appendix.pdf
-
