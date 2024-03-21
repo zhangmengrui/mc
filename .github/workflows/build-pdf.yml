@@ -7,17 +7,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup TeX Live
-      uses: xu-cheng/latex-action@v2
-      with:
-        root_file: Appendix.tex
+      - uses: actions/checkout@v2
 
-    - name: Compile LaTeX document
-      run: pdflatex Appendix.tex
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng texlive-latex-recommended
 
-    - name: Upload PDF
-      uses: actions/upload-artifact@v2
-      with:
-        name: Compiled-PDF
-        path: Appendix.pdf
+      - name: Compile LaTeX document
+        run: pdflatex Appendix.tex
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v2
+        with:
+          name: Compiled-PDF
+          path: ./Appendix.pdf
