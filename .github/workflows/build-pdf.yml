@@ -12,7 +12,7 @@ jobs:
       - name: Install TeX Live
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng texlive-latex-recommended
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra dvipng texlive-latex-recommended texlive-fonts-recommended
 
       - name: Compile LaTeX document
         run: pdflatex Appendix.tex
