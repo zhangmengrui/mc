@@ -128,4 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-/LaTex
+/jss
+doc/api.aux
+doc/api.bbl
+doc/api.blg
+doc/api.out
+doc/api.pdf
+doc/api.synctex.gz
